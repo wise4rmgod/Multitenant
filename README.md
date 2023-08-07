@@ -2,6 +2,11 @@
  
 This is a Node.js and MongoDB-based multitenant backend application for managing organizations, users, and stores. The application provides REST API endpoints for creating, retrieving, updating, and deleting organizations, users, and stores.
 
+> Make sure you have mongod installed via this link https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
+> - Start mongod on Mac using this command `brew services start mongodb/brew/mongodb-community` and
+> - Stop mongod using this command `brew services stop mongodb-community@6.0`
+
+
 ## Features
 - Organization registration with basic information such as name, email, department, and password.
 - User registration linked to organizations, including user details and role.
