@@ -7,10 +7,18 @@ const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://localhost/organization-app", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb://aptible:GXo2YeTMl8rq910TZ4YiZkkVDr0UF47w@db-shared-us-east-1-wat-111486.aptible.in:22035/db?ssl=true",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
+// mongoose.connect("mongodb://localhost/organization-app", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 const Organization = require("./Organization");
 const User = require("./User");
