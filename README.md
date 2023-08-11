@@ -40,6 +40,25 @@ node server.js
 The server will run on http://localhost:3000 by default. You can now use API endpoints to interact with the application.
 
 ## API Endpoints
+### Base URL
+The base URL for our API is: https://app-59001.on-aptible.com/
+
+### Making Requests
+Our API uses the HTTP protocol, and requests are made using the appropriate HTTP methods. The data is typically sent and received in JSON format.
+
+### Error Handling
+Our API returns standard HTTP status codes to indicate the outcome of a request. Additionally, the response body may include an error object with more details.
+
+Here are some standard error status codes and their meanings:
+
+- **400 Bad Request:** The request was malformed or had invalid parameters.
+- **401 Unauthorized:** The request lacks valid authentication credentials.
+- **403 Forbidden:** The authenticated user does not have permission to access the requested resource.
+- **404 Not Found:** The requested resource was not found.
+- **500 Internal Server Error:** An unexpected error occurred on the server.
+
+Below are some of the key API endpoints you can start using:
+
 ### Organization Registration:
 Create an Organization:
 
