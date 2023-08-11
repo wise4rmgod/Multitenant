@@ -16,5 +16,8 @@ COPY . .
 # Expose the port that the app will run on
 EXPOSE 3000
 
+# Set the environment variable for MongoDB URL
+ENV MONGODB_URL=$MONGODB_URL
+
 # Start the application
 CMD ["node", "server.js"]
