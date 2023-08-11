@@ -31,32 +31,125 @@ npm install
 ```
 3. Configure MongoDB:
 
-Update the MongoDB connection URL in `src/app.js` to point to your MongoDB instance.
+Update the MongoDB connection URL in `server.js` to point to your MongoDB instance.
 
 4. Start the server:
 ```
-node src/app.js
+node server.js
 ```
 The server will run on http://localhost:3000 by default. You can now use API endpoints to interact with the application.
 
 ## API Endpoints
-1. Organizations:
+### Base URL
+The base URL for our API is: https://app-59001.on-aptible.com/
 
-- POST /organizations: Create a new organization.
-- GET /organizations: Get all organizations.
-- GET /organizations/:id: Get a specific organization.
-- PUT /organizations/:id: Update an organization.
-  
-2. Users:
+### Making Requests
+Our API uses the HTTP protocol, and requests are made using the appropriate HTTP methods. The data is typically sent and received in JSON format.
 
-- POST /organizations/:orgId/users: Create a new user within an organization.
-- GET /organizations/:orgId/users: Get all users within an organization.
-- PUT /users/:id: Update a user.
+### Error Handling
+Our API returns standard HTTP status codes to indicate the outcome of a request. Additionally, the response body may include an error object with more details.
 
-3. Stores:
+Here are some standard error status codes and their meanings:
 
-- POST /users/:userId/stores: Create a new store for a user.
-- GET /users/:userId/stores: Get all stores owned by a user.
+- **400 Bad Request:** The request was malformed or had invalid parameters.
+- **401 Unauthorized:** The request lacks valid authentication credentials.
+- **403 Forbidden:** The authenticated user does not have permission to access the requested resource.
+- **404 Not Found:** The requested resource was not found.
+- **500 Internal Server Error:** An unexpected error occurred on the server.
+
+Below are some of the key API endpoints you can start using:
+
+### Organization Registration:
+Create an Organization:
+
+- Method: POST
+- Endpoint: /organizations
+- Request Body:
+```json
+{
+  "name": "Organization Name",
+  "email": "organization@example.com",
+  "department": "IT",
+  "password": "organizationPassword"
+}
+```
+- Response: Newly created organization details
+### Get All Organizations:
+
+- Method: GET
+- Endpoint: /organizations
+- Response: List of all organizations
+### Get a Specific Organization:
+
+- Method: GET
+- Endpoint: /organizations/:id
+- Response: Details of the specified organization
+### Update an Organization:
+
+- Method: PUT
+- Endpoint: /organizations/:id
+- Request Body:
+```json
+{
+  "name": "New Organization Name",
+  "email": "new@example.com",
+  "department": "HR"
+}
+```
+- Response: Updated organization details
+
+## Users Registration:
+### Create a User:
+
+- Method: POST
+- Endpoint: /organizations/:orgId/users
+- Request Body:
+```json
+{
+  "name": "User Name",
+  "email": "user@example.com",
+  "password": "userPassword",
+  "role": "employee"
+}
+```
+- Response: Newly created user details
+### Get All Users for an Organization:
+
+- Method: GET
+- Endpoint: /organizations/:orgId/users
+- Response: List of users in the specified organization
+### Update a User:
+
+- Method: PUT
+- Endpoint: /users/:id
+- Request Body:
+```json
+{
+  "name": "Updated User Name",
+  "role": "manager"
+}
+```
+- Response: Updated user details
+
+## Stores Management:
+### Create a Store for a User:
+
+- Method: POST
+- Endpoint: /users/:userId/stores
+- Request Body:
+```json
+{
+  "name": "Store Name",
+  "description": "Store Description",
+  "link": "storelink.com"
+}
+```
+- Response: Newly created store details
+### Get All Stores for a User:
+
+- Method: GET
+- Endpoint: /users/:userId/stores
+- Response: List of stores owned by the user
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or pull requests for improvements or bug fixes.
